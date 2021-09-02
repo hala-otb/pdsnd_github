@@ -7,9 +7,9 @@ CITY_DATA = { 'chicago': 'chicago.csv',
                         'washington': 'washington.csv' }
 
 
-    
+
 def get_filters():
-    
+
     """
     Asks user to specify a city, month, and day to analyze.
 
@@ -18,15 +18,15 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-        
-    
+
+
     print('Hello! Let\'s explore some US bikeshare data!')
 
-    
+
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    
+
     while True:
-        city=input('enter which city you want (new york city, chicago or washington) ').lower()
+        city=input('enter which city (new york city, chicago or washington) ').lower()
         if city not in CITY_DATA:
             print('Wrong entry, please choose from (chicago, new york city, washington)')
         else:
@@ -34,8 +34,8 @@ def get_filters():
 
 
     # TO DO: get user input for month (all, january, february, ... , june)
-        
-    month=input('enter which month you want (from january to june) or all for all months ').lower()
+
+    month=input('enter which month (from january to june) or all for all months ').lower()
     months =['january','february','march','april','may','june']
     while month != 'all' and month not in months:
         month=input('Wrong entry, please choose month from january to june')
@@ -46,7 +46,7 @@ def get_filters():
     days=['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
     while day != 'all' and day not in days:
         day=input('Wrong entry, please enter correct day ')
-        
+
     print('-'*40)
     return city, month, day
 
@@ -97,7 +97,7 @@ def time_stats(df):
     most_hour = df['hour'].mode()[0]
     print(' The most common hour; ', most_hour)
 
-   
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -112,7 +112,7 @@ def station_stats(df):
     # TO DO: display most commonly used start station
     most_start_st = df['Start Station'].mode()[0]
     print('The most commonly used start station:', most_start_st)
-    
+
     # TO DO: display most commonly used end station
     most_end_st = df['End Station'].mode()[0]
     print('The most commonly used end station:', most_end_st)
@@ -171,13 +171,13 @@ def user_stats(df):
 
 def raw_display(df):
     raw_display= input('you want see 5 lines of raw data?')
-    start_loc= 0 
+    start_loc= 0
     while raw_display.lower() == 'yes':
         print(df.iloc[start_loc: start_loc+5])
         start_loc +=5
         raw_display= input('you want see next 5 lines of raw data?')
-        
-        
+
+
 def main():
     while True:
         city, month, day = get_filters()
